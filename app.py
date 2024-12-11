@@ -23,7 +23,7 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
-@app.route('/upload', methods=['POST'])
+@app.route('/', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
         return redirect(request.url)
@@ -43,7 +43,7 @@ def upload_image():
         
         return render_template('index.html', original_image=filename, removed_image=f"remove_bg_{filename}")
     
-    return redirect(url_for('index'))
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port = 10000)
