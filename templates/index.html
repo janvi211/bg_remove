@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remove Background</title>
+    <title>Background Remover</title>
 </head>
 <body>
-    <h1>Upload an Image</h1>
-    
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Upload</button>
+    <h1>Background Remover</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload Image</button>
     </form>
 
     {% if original_image %}
-    <h2>Original Image:</h2>
-    <img src="{{ url_for('static', filename='uploads/' + original_image) }}" alt="Original Image" style="width:300px;">
-    
-    <h2>Background Removed:</h2>
-    <img src="{{ url_for('static', filename='uploads/' + removed_image) }}" alt="Processed Image" style="width:300px;">
+        <h2>Original Image:</h2>
+        <img src="{{ url_for('static', filename='uploads/' + original_image) }}" alt="Original Image" width="300">
+        <h2>Background Removed:</h2>
+        <img src="{{ url_for('static', filename='uploads/' + removed_image) }}" alt="Processed Image" width="300">
     {% endif %}
 </body>
 </html>
