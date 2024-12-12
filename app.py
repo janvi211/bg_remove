@@ -10,6 +10,14 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+MAX_IMAGE_SIZE = (1024, 1024)
+
+def resize_image(image_path):
+    with Image.open(image_path) as img:
+        img.thumbnail(MAX_IMAGE_SIZE)
+        img.save(image_path)  # Save the resized image back to the same path
+    return image_path
+
 def remove_background(input_path, output_path):
     with open(input_path, "rb") as input_file, open(output_path, "wb") as output_file:
         input_data = input_file.read()
